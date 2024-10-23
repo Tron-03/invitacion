@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+
+<body>
+    <audio id="song" src="source/song.mp3" loop> </audio>
+     
+    <div id="contenido"  class="invitacion">
+        <div class="mascara"> 
+            <button id="limpiarBoton" class="btn-class-name">
+              <span class="back"></span>
+              <span class="front"></span>
+              
+
+<!-- ///////////////////////SONIDO DEL BOTON////////////////////////////////////////// -->
+<script>
+    let boton = document.querySelector(".btn-class-name");
+    let sonidoPuerta = new Audio("source/doors.mp3"); // Solo una instancia del audio
+
+    boton.addEventListener("click", () => {
+        if (sonidoPuerta.paused) { // Verifica si está pausado
+            sonidoPuerta.play();  // Reproduce si no está en reproducción
+        }
+    });
+</script>
+
+<!-- ///////////////////////AUDIO DE FONDO////////////////////////////////////////// -->
+<script>
+    let buton = document.querySelector(".btn-class-name");
+    let etiquetaAudio = document.getElementById("song"); // Ya tienes el audio en la etiqueta <audio>
+
+    buton.addEventListener("click", () => {
+        if (etiquetaAudio.paused) { // Solo lo reproduce si está pausado
+            setTimeout(() => {
+                etiquetaAudio.play(); 
+            }, 4700); // Inicia después de 4.7 segundos
+        }
+    });
+</script>
+
+<!-- ////////////////////////LIMPIAR PANTALLA///////////////////////////////////////// -->
+<script>
+    document.getElementById('limpiarBoton').addEventListener('click', function() {
+        var contenido = document.getElementById('contenido');
+        
+        // Aplicar la clase 'fade-out' para iniciar el desvanecimiento
+        contenido.classList.add('fade-out');
+        
+        // Esperar hasta que el desvanecimiento termine (1 segundo en este caso)
+        setTimeout(function() {
+            // Limpiar el contenido y agregar nuevo contenido
+            contenido.innerHTML = `
+                <div class="maskada">
+                    
+                        <a href="https://maps.app.goo.gl/rKGLf9Ce4s5B3R5k7" target="_blank" rel="noopener noreferrer">><img src="source/Mi.gif"></a>
+                    
+                </div>
+            `;
+            
+            // Quitar la clase 'fade-out' para volver a la opacidad completa
+            contenido.classList.remove('fade-out');
+        }, 3000); // Tiempo de 1 segundo coincide con la duración de la transición
+    });
+</script> 
+
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="maskada">
+        <img src="source/Mi.gif"><br>
+    </div>
+</body>
+</html> -->
